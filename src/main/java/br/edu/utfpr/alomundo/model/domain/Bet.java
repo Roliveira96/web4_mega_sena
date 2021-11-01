@@ -21,23 +21,20 @@ public class Bet {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @NonNull
+    private Long idUser;
+    @NonNull
     private String bet;
     @NonNull
     private String probability;
     @NonNull
     private double value;
+    private int acertos;
 
 
     public int betGetValue(ArrayList<Integer> array) {
         int[] valores = Constants.BET_AMOUNT;
         return valores[array.size() - 6];
     }
-
-//    public ArrayList<Integer> toStringInToArray(String betString) {
-//        ArrayList<Integer> bet = new ArrayList<Integer>(Arrays.asList(betString.split(",")));
-//
-//        return bet;
-//    }
 
     public ArrayList<Integer> convertArrayStringInArrayInteger(String array) {
         ArrayList<String> betArrayString = new ArrayList<String>(Arrays.asList(array.split(",")));

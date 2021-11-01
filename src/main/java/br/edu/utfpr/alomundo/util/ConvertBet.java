@@ -35,7 +35,7 @@ public class ConvertBet {
 
         bet = convertArrayStringInArrayInteger(betPOST);
         double value = valueBet(valuePost);
-        Bet bt = new Bet(betPOST, probability, value);
+        Bet bt = new Bet(Constants.ID_USER,betPOST, probability, value);
 
         System.out.println("Bets: ");
         System.out.println(bt.getBet());

@@ -8,15 +8,13 @@ import br.edu.utfpr.alomundo.model.dto.LotteryDrawingDTO;
 public class LotteryDrawingMapper {
 
     public static LotteryDrawing toEntity(LotteryDrawingDTO dto){
-        LotteryDrawing entity = new LotteryDrawing(dto.getBet(), dto.getValue());
+        LotteryDrawing entity = new LotteryDrawing(dto.getLotteryDrawing(), dto.getValue());
         return entity;
     }
 
-    public static BetDTO toDTO(Bet entity){
-        System.out.println("teste toDTO");
-        System.out.println(entity.getBet());
-  //  BetDTO dto = new BetDTO(entity.getBet(), entity.getValue(), entity.getProbability());
-    BetDTO dto = new BetDTO(entity.getBet(),entity.getValue(),entity.getProbability());
+    public static LotteryDrawingDTO toDTO(LotteryDrawing entity){
+
+        LotteryDrawingDTO dto = new LotteryDrawingDTO(entity.getLotterydrawing(),entity.getValue());
         return dto;
     }
 }

@@ -2,6 +2,7 @@ package br.edu.utfpr.alomundo.controler;
 
 import br.edu.utfpr.alomundo.model.domain.Bet;
 import br.edu.utfpr.alomundo.service.BetService;
+import br.edu.utfpr.alomundo.util.Constants;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -32,7 +33,6 @@ public class ToBetController extends HttpServlet {
            // System.out.println("Dentro do IF");
             request.getRequestDispatcher("/WEB-INF/view/toBet.jsp").forward(request, response);
         } else {
-           // System.out.println("Nome: " + name);
 
         }
 
@@ -54,7 +54,6 @@ public class ToBetController extends HttpServlet {
         request.setAttribute("flash.betObj", bet);
         request.setAttribute("flash.betString", betPost);
         System.out.println("Erro aqui");
-   // request.getRequestDispatcher("/confirmacao").forward(request, response);
 
         response.sendRedirect("finalizacao");
 
@@ -74,24 +73,18 @@ public class ToBetController extends HttpServlet {
 
     public Bet createBet(String betPOST, String probability, String valuePost) {
 
-     //   System.out.println("Dentro do CreatBet");
         ArrayList<Integer> bet = new ArrayList<Integer>();
 
         bet = convertArrayStringInArrayInteger(betPOST);
         double value = valueBet(valuePost);
-        Bet bt = new Bet(betPOST, probability, value);
+        Bet bt = new Bet(Constants.ID_USER,betPOST, probability, value);
 
-//        System.out.println("Bets: ");
-//        System.out.println(bt.getBet());
-//        System.out.println(bt.getValue());
-//        System.out.println(" fim Bets: ");
 
         return bt;
 
     }
 
     private double valueBet(String valuePost) {
-       // System.out.println("Dentro do ValueBet");
         return Double.parseDouble(valuePost);
     }
 

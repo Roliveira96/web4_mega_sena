@@ -1,8 +1,11 @@
 package br.edu.utfpr.alomundo.controler;
 
 import br.edu.utfpr.alomundo.model.domain.Bet;
+import br.edu.utfpr.alomundo.model.domain.LotteryDrawing;
 import br.edu.utfpr.alomundo.model.dto.BetDTO;
 import br.edu.utfpr.alomundo.service.BetService;
+import br.edu.utfpr.alomundo.service.LotteryDrawingService;
+import br.edu.utfpr.alomundo.util.Constants;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -39,31 +42,34 @@ public class BetConfirmationController extends HttpServlet {
         System.out.println(betPost + " " + probability + " " + valuePost);
 
 
-
-        Bet bet = new Bet(betPost,probability,Double.parseDouble(valuePost));
+        Bet bet = new Bet(Constants.ID_USER,betPost,  probability, Double.parseDouble(valuePost));
         getServletContext().setAttribute("bet", bet);
-        System.out.println("testst");
-
-//        bet.setProbability(probability);
-//        bet.setValue(Double.parseDouble(valuePost));
-//        bet.setBet(betPost);
-
-        System.out.println("dasfasgsdgfhdf");
 
 
-       BetService service = new BetService();
+        BetService service = new BetService();
+        LotteryDrawingService lotService = new LotteryDrawingService();
 
 
-        System.out.println("Salvando");
+
+
+
+        LotteryDrawing lotteryDrawing = new LotteryDrawing();
+        String drawing = lotteryDrawing.drawing();
+
+
+        System.out.println("Seu Jogo: " + betPost);
+        System.out.println("Sorteio: " + drawing);
+
+        int acertos = lotteryDrawing.acetos(betPost, drawing);
+
+        lotteryDrawing.setValue(Constants.VALUE_DRAWING);
+        lotteryDrawing.setLotterydrawing(drawing);
+
+        //Salvando...
+
+        lotService.save(lotteryDrawing);
+        bet.setAcertos(acertos);
         service.save(bet);
-
-       // BetDTO betDTO = BetMapper.toDTO(bet);
-
-        System.out.println("Salvo!");
-
-
-        System.out.println("fdsfsdfdfsad");
-
 
         response.sendRedirect("megasena");
         // request.getRequestDispatcher("megasena").forward(request, response);

@@ -8,6 +8,8 @@ import lombok.NonNull;
 public class BetDTO {
 
     @NonNull
+    private Long idUser;
+    @NonNull
     private String bet;
     @NonNull
     private double value;

@@ -7,7 +7,7 @@ import lombok.NonNull;
 public class LotteryDrawingDTO {
 
     @NonNull
-    private String bet;
+    private String lotteryDrawing;
     @NonNull
     private double value;
 
