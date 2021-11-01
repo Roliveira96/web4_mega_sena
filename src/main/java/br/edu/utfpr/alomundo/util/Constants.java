@@ -1,8 +1,11 @@
 package br.edu.utfpr.alomundo.util;
 
+import br.edu.utfpr.alomundo.model.domain.LotteryDrawing;
+
 public class Constants {
     public static final String COUNTER_APPLICATION = "counterApplication";
     public static final String COUNTER_SESSION = "counterSession";
+    //public static final LotteryDrawing[] DRAWING = new LotteryDrawing[0];
 
     //Nome do persistence unit
     public static final String PERSISTENCE_UNIT = "alomundo-pu";

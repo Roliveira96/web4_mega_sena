@@ -10,12 +10,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.ArrayList;
+
 
 @WebServlet(name = "login", value = "/login")
 public class UserController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        System.out.println("login - /login - doGET");
 
         request.getRequestDispatcher("/WEB-INF/view/login.jsp").forward(request, response);
 
@@ -23,10 +24,11 @@ public class UserController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        System.out.println("login - /login - doPOST");
 
 
         String name = request.getParameter("name");
-        System.out.println(name);
+
 
 
         User user = new User(name);
@@ -34,7 +36,7 @@ public class UserController extends HttpServlet {
         service.save(user);
 
 
-        Cookie ck = new Cookie("nameUser", String.valueOf(name));
+        Cookie ck = new Cookie("nameUser", name);
         Cookie ck1 = new Cookie("idUser", String.valueOf(user.getId()));
 
         ck.setMaxAge(60 * 60 * 12);
@@ -46,9 +48,7 @@ public class UserController extends HttpServlet {
 
         request.setAttribute("name", name);
         request.setAttribute("flash.name", name);
-        System.out.println("Dentro do POST login");
         response.sendRedirect("megasena");
-        //  request.getRequestDispatcher("/WEB-INF/view/game.jsp").forward(request, response);
 
     }
 

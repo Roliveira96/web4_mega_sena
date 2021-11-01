@@ -25,15 +25,12 @@ public class ToBetController extends HttpServlet {
         System.out.println("toBetController - /aposta - doGet");
 
         String name = request.getParameter("name");
-     //   System.out.println("Nome dentro do Game: " + name);
 
 
         if (name == null) {
-            // request.getRequestDispatcher("/WEB-INF/view/login.jsp").forward(request, response);
-           // System.out.println("Dentro do IF");
             request.getRequestDispatcher("/WEB-INF/view/toBet.jsp").forward(request, response);
         } else {
-
+            request.getRequestDispatcher("/WEB-INF/view/megasena.jsp").forward(request, response);
         }
 
     }
@@ -48,7 +45,6 @@ public class ToBetController extends HttpServlet {
 
 
         Bet bet = createBet(betPost, probability, valuePost);
-
 
 
         request.setAttribute("flash.betObj", bet);
@@ -77,8 +73,7 @@ public class ToBetController extends HttpServlet {
 
         bet = convertArrayStringInArrayInteger(betPOST);
         double value = valueBet(valuePost);
-        Bet bt = new Bet(Constants.ID_USER,betPOST, probability, value);
-
+        Bet bt = new Bet(Constants.ID_USER, betPOST, probability, value);
 
         return bt;
 
@@ -87,7 +82,5 @@ public class ToBetController extends HttpServlet {
     private double valueBet(String valuePost) {
         return Double.parseDouble(valuePost);
     }
-
-
 
 }
