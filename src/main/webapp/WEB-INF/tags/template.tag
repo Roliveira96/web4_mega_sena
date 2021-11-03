@@ -26,7 +26,7 @@
             <a href="#" class="brand-logo">Logo</a>
             <ul id="nav-mobile" class="right hide-on-med-and-down">
                 <li><a href="/">Home</a></li>
-                <li><a href="calculadora-idade">Calculadora</a></li>
+                <li><a href="sorteios">Sorteios</a></li>
                 <li class="green"><a href="login">Login</a></li>
 
             </ul>
