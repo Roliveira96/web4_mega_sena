@@ -17,13 +17,27 @@
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"></link>
     <link href='http://fonts.googleapis.com/css?family=Roboto:200,700' rel='stylesheet' type='text/css'/>
     <title>${title}</title>
+
+    <style>
+
+        body {
+            display: flex;
+            min-height: 100vh;
+            flex-direction: column;
+        }
+
+        main {
+            flex: 1 0 auto;
+        }
+
+    </style>
 </head>
 <body>
 
 <header class=" blue">
     <nav class="blue container">
         <div class="nav-wrapper">
-            <a href="#" class="brand-logo">Logo</a>
+            <a href="#" class="brand-logo">Mega da UTFPR</a>
             <ul id="nav-mobile" class="right hide-on-med-and-down">
                 <li><a href="/">Home</a></li>
                 <li><a href="sorteios">Sorteios</a></li>

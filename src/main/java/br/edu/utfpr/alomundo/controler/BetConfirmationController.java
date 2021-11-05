@@ -2,7 +2,6 @@ package br.edu.utfpr.alomundo.controler;
 
 import br.edu.utfpr.alomundo.model.domain.Bet;
 import br.edu.utfpr.alomundo.model.domain.LotteryDrawing;
-import br.edu.utfpr.alomundo.model.dto.BetDTO;
 import br.edu.utfpr.alomundo.service.BetService;
 import br.edu.utfpr.alomundo.service.LotteryDrawingService;
 import br.edu.utfpr.alomundo.util.Constants;
@@ -21,12 +20,14 @@ public class BetConfirmationController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         System.out.println("BetConfirmationController - /finalizacao - doGet");
-//        String bet = request.getParameter("betObj");
-//        String valueBet = request.getParameter("valuaBet");
-//        String probability = request.getParameter("probability");
-        System.out.println("");
 
-        request.getRequestDispatcher("/WEB-INF/view/betConfirmation.jsp").forward(request, response);
+
+        String betPost = request.getParameter("bet");
+        if (betPost != null)
+            request.getRequestDispatcher("/WEB-INF/view/game.jsp").forward(request, response);
+        else
+            request.getRequestDispatcher("/WEB-INF/view/betConfirmation.jsp").forward(request, response);
+
     }
 
     @Override
@@ -42,15 +43,12 @@ public class BetConfirmationController extends HttpServlet {
         System.out.println(betPost + " " + probability + " " + valuePost);
 
 
-        Bet bet = new Bet(Constants.ID_USER,betPost,  probability, Double.parseDouble(valuePost));
+        Bet bet = new Bet(Constants.ID_USER, betPost, probability, Double.parseDouble(valuePost));
         getServletContext().setAttribute("bet", bet);
 
 
         BetService service = new BetService();
         LotteryDrawingService lotService = new LotteryDrawingService();
-
-
-
 
 
         LotteryDrawing lotteryDrawing = new LotteryDrawing();
@@ -71,14 +69,25 @@ public class BetConfirmationController extends HttpServlet {
         bet.setAcertos(acertos);
         service.save(bet);
 
-        response.sendRedirect("megasena");
-        // request.getRequestDispatcher("megasena").forward(request, response);
+        Integer counterApplication = (Integer) request.getServletContext().getAttribute(Constants.COUNTER_APPLICATION);
+
+        if(counterApplication == null){
+            counterApplication = 0;
+        }
+        counterApplication++;
+
+        getServletContext().setAttribute(Constants.COUNTER_APPLICATION, counterApplication);
+
+
+        request.setAttribute("flash.bet", bet);
+        request.setAttribute("flash.drawing", drawing);
+        request.setAttribute("flash.acertos", acertos);
+
+       response.sendRedirect("resultado");
 
     }
 
     private void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-
         System.out.println("Aqui dentro do Bet Validation");
     }
 }

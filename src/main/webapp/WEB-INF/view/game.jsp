@@ -18,7 +18,7 @@
 
                         </div>
                         <div class="row center">
-                            <a class="waves-effect yellow btn">Resultado</a>
+                            <a href="resultado" class="waves-effect yellow btn">Resultado</a>
 
                         </div>
                         <div class="row center">

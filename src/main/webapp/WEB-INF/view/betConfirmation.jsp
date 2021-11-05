@@ -39,22 +39,17 @@
 
                         <form action="finalizacao" method="POST">
 
-                            <div class="row">
+                            <div class="row hide">
                                 <div class="input-field col s12">
-                                    <label for="betOBJ">Jogo</label>
                                     <input name="bet" id="betOBJ2" type="text" class="validate" value="${betString}">
-                                </div>
+                                    <label for="betOBJ2">Jogo</label>
 
-                            </div>
-                            <div class="row">
-                                <div class="input-field col s12">
-                                    <input name="betOBJ" id="betOBJ" type="text" class="validate" value="">
-                                    <label for="betOBJ">Jogo</label>
                                 </div>
 
                             </div>
 
-                            <div class="row">
+
+                            <div class="row hide">
                                 <div class="input-field col s12">
                                     <input name="valor" id="valueBet" type="text" class="validate"
                                            value="${betObj.value}">
@@ -62,7 +57,7 @@
                                 </div>
                             </div>
 
-                            <div class="row">
+                            <div class="row hide">
                                 <div class="input-field col s12">
                                     <input name="probabilityInp" id="probabilityInp" type="text" class="validate"
                                            value="${betObj.probability}">
@@ -72,10 +67,11 @@
 
 
                             <div class="row">
-                                <p class="input-field col s12">Valor: <b> </b>
-                                </p>
+
+                                <p class="input-field col s12">Aposta: <b>${betString} </b></p>
+                                <p class="input-field col s12">Valor: <b>${betObj.value} </b></p>
                                 <p class="input-field col s12">Probabilidade de acerto (1 em):
-                                    <b> </b>
+                                    <b>${betObj.probability}</b>
                                 </p>
 
                             </div>
@@ -96,10 +92,6 @@
                 </div>
             </div>
         </div>
-
-        <script>
-
-        </script>
 
     </jsp:body>
 </t:template>

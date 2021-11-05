@@ -59,14 +59,14 @@
                                     <label for="valorInp">Ocultar depois</label>
                                 </div>
                             </div>
-                            <div class="row ">
+                            <div class="row hide ">
                                 <div class="input-field col s12">
-                                    <input  name="probabilityInp" id="probabilityInp" type="text" class="validate" value="">
+                                    <input   name="probabilityInp" id="probabilityInp" type="text" class="validate" value="">
                                     <label for="probabilityInp">Ocultar depois</label>
                                 </div>
                             </div>
 
-                            <div class="row ">
+                            <div class="row  ">
                                 <p class="input-field col s12">Valor: <b id="valor"></b>
                                 </p> <p class="input-field col s12">Probabilidade de acerto (1 em): <b id="probability"></b></p>
 

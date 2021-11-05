@@ -6,22 +6,38 @@
 <t:template title="Login">
 
     <jsp:body>
+
         <div class="row">
-            <form action="login" method="POST">
+            <div class="col s12 m6">
+                <div class="card white darken-1">
+                    <div class="card-content ">
+                        <span class="card-title">Login</span>
+                        <form action="login" method="POST">
 
-                <div class="row">
-                    <div class="input-field col s12">
-                        <input name="name" id="email" type="text" class="validate" value="Ricardo">
-                        <label for="email">Nome</label>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input name="name" id="email" type="text" class="validate" value="Ricardo">
+                                    <label for="email">Nome</label>
+                                </div>
+                            </div>
+
+
+                            <button class="btn waves-effect waves-light" type="submit" name="action">Logar
+
+                            </button>
+
+                        </form>
+
+
+
                     </div>
+
                 </div>
-
-                <button>Enviar</button>
-            </form>
-
-            <a class="waves-effect waves-light btn"><i class="material-icons right">Cadastro</i>button</a>
-
+            </div>
         </div>
+
+
+
     </jsp:body>
 </t:template>
 

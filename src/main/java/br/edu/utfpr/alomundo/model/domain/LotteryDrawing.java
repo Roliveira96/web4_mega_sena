@@ -24,7 +24,6 @@ public class LotteryDrawing {
     private Long id;
     @NonNull
     private String lotterydrawing;
-
     @NonNull
     private double value;
 
@@ -87,9 +86,7 @@ public class LotteryDrawing {
 
         //Ordenação pronta que coisa boa isso.
         Arrays.sort(num);
-
         return num;
-
     }
 
     public int acetos(String bet, String drawing) {
